@@ -107,6 +107,8 @@ function morgan (format, options) {
   // check if log entry should be skipped
   var skip = opts.skip || false
 
+  var getMetadata = opts.getMetadata
+
   // format function
   var formatLine = typeof fmt !== 'function'
     ? getFormatFunction(fmt)
@@ -142,6 +144,11 @@ function morgan (format, options) {
     // record request start
     recordStartTime.call(req)
 
+    // record custom request metadata
+    if (getMetadata) {
+      recordMetadata.call(req, getMetadata(req, res))
+    }
+
     function logRequest () {
       if (skip !== false && skip(req, res)) {
         debug('skip request')
@@ -157,9 +164,9 @@ function morgan (format, options) {
 
       debug('log request')
       if (stream.writableObjectMode && typeof line === 'object') {
-        stream.write(line)
+        stream.write(line, req._morganMetadata || {})
       } else {
-        stream.write(line + '\n')
+        stream.write(line + '\n', req._morganMetadata || {})
       }
     };
 
@@ -574,6 +581,15 @@ function pad2 (num) {
 function recordStartTime () {
   this._startAt = process.hrtime()
   this._startTime = new Date()
+}
+
+/**
+ * Record the custom request metadata.
+ * @private
+ */
+
+function recordMetadata (metadata) {
+  this._morganMetadata = metadata
 }
 
 /**
