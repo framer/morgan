@@ -1,8 +1,7 @@
 {
   "name": "@framerjs/morgan",
-  "private": true,
   "description": "HTTP request logger middleware for node.js",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "contributors": [
     "Douglas Christopher Wilson <doug@somethingdoug.com>",
     "Jonathan Ong <me@jongleberry.com> (http://jongleberry.com)"
@@ -46,7 +45,8 @@
     "LICENSE",
     "HISTORY.md",
     "README.md",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "engines": {
     "node": ">= 0.8.0"
@@ -56,5 +56,6 @@
     "test": "mocha --check-leaks --reporter spec",
     "test-ci": "nyc --reporter=lcov --reporter=text npm test",
     "test-cov": "nyc --reporter=html --reporter=text npm test"
-  }
+  },
+  "types": "./index.d.ts"
 }
