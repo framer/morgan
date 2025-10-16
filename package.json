@@ -1,7 +1,8 @@
 {
-  "name": "morgan",
+  "name": "@framerjs/morgan",
+  "private": true,
   "description": "HTTP request logger middleware for node.js",
-  "version": "1.10.1",
+  "version": "1.11.1",
   "contributors": [
     "Douglas Christopher Wilson <doug@somethingdoug.com>",
     "Jonathan Ong <me@jongleberry.com> (http://jongleberry.com)"
@@ -13,7 +14,10 @@
     "logger",
     "middleware"
   ],
-  "repository": "expressjs/morgan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/framer/morgan.git"
+},
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/express"
