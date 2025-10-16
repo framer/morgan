@@ -1,6 +1,5 @@
 {
   "name": "@framerjs/morgan",
-  "private": true,
   "description": "HTTP request logger middleware for node.js",
   "version": "1.12.1",
   "contributors": [
@@ -45,7 +44,8 @@
   "files": [
     "LICENSE",
     "README.md",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "engines": {
     "node": ">= 0.8.0"
@@ -55,5 +55,6 @@
     "test": "mocha --check-leaks --reporter spec test/morgan.js && mocha --check-leaks --reporter spec test/noColor.js",
     "test-ci": "nyc --reporter=lcov --reporter=text npm test",
     "test-cov": "nyc --reporter=html --reporter=text npm test"
-  }
+  },
+  "types": "./index.d.ts"
 }
